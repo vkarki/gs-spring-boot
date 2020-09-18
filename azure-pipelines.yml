@@ -28,7 +28,7 @@ stages:
     - task: Maven@3
       displayName: 'Maven Package'
       inputs:
-        mavenPomFile: 'pom.xml'
+        mavenPomFile: './complete/pom.xml'
 
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
@@ -60,4 +60,4 @@ stages:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               appName: $(webAppName)
-              package: '$(Pipeline.Workspace)/drop/**/target/*.jar'
+              package: '$(Pipeline.Workspace)/drop/complete/target/*.jar'
