@@ -55,9 +55,13 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: hpe-rps'
             inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
+              azureSubscription: 'Free Trial(b0199e68-059a-47f0-a685-74588c223168)'
+              appType: 'webAppLinux'
+              appName: 'hpe-rps'
+              deployToSlotOrASE: true
+              resourceGroupName: 'testgroup'
+              slotName: 'production'
               package: '$(Pipeline.Workspace)/drop/complete/target/*.jar'
+              runtimeStack: 'JAVA|11-java11'
+              startUpCommand: 'java -jar /spring-boot-0.0.1-SNAPSHOT.jar'
